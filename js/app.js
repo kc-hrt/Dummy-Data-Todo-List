@@ -1,18 +1,19 @@
 // We'll pre-populate this array with a couple objects just so it's not undefined if your internet connection isn't working properly.
 
 let arrayOfTodos = [
-  {
-  "userId": 14,
-  "id": 1,
-  "title": "delectus aut autem",
-  "completed": false
-},
-{
-  "userId": 20,
-  "id": 2,
-  "title": "delectus aut autem",
-  "completed": false
-}]
+//   {
+//   "userId": 14,
+//   "id": 1,
+//   "title": "waka waka",
+//   "completed": false
+// },
+// {
+//   "userId": 20,
+//   "id": 2,
+//   "title": "tootsy wootsy",
+//   "completed": false
+// }
+]
 
 const fetchTodos = () => {
   fetch('https://jsonplaceholder.typicode.com/todos')
@@ -22,15 +23,23 @@ const fetchTodos = () => {
   console.log('arrayOfTodos:',arrayOfTodos)
 }
 
+const fetchUserTodos = () => {
+  console.log(document.getElementById("userTodos").value);
+  fechURL = 'https://jsonplaceholder.typicode.com/todos' + '?userId=' + document.getElementById("userTodos").value
+  console.log(fechURL)
+  
+  fetch(fechURL)
+  .then( (response) => response.json())
+  .then( (json) => arrayOfTodos = json)
+  console.log('arrayOfTodos:',arrayOfTodos)
+}
+
 const logTodos = () => {
   console.log(arrayOfTodos)
 }
 
-const populateTodos = () => {
-  // fetch('https://jsonplaceholder.typicode.com/todos')
-  // .then((response) => response.json())
-  // .then((json) => console.log(json));
-
+const populateAllTodos = () => {
+  console.log('arrayOfTodos:',arrayOfTodos)
   //get ol tag to insert list items
   const ol = document.getElementById('todo-list');
 
@@ -54,6 +63,12 @@ const populateTodos = () => {
 }
 
 
+const populateUserTodos = () => populateAllTodos()
+
+
 // console.log(arrayOfTodos1[0].userId) // => 14
 // console.log(arrayOfTodos1[1].userId) // => 20
 
+const resetPage = () => {
+  document.getElementById("content").innerHTML='<object type="text/html" data="index.html" ></object>';
+}
