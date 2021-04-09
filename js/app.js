@@ -39,7 +39,16 @@ const logTodos = () => {
 }
 
 const populateAllTodos = () => {
-  
+  // fetch('https://jsonplaceholder.typicode.com/todos')
+  // .then((response) => response.json())
+  // .then((json) => arrayOfTodos = json)
+
+  // .then((json) => arrayOfTodos(json));
+
+  // clear content before repopulating
+  document.getElementById('todo-list').innerHTML = "";
+
+
   console.log('arrayOfTodos:',arrayOfTodos)
   //get ol tag to insert list items
   const ol = document.getElementById('todo-list');
@@ -66,6 +75,10 @@ const populateAllTodos = () => {
 
 const populateUserTodos = () => {
   console.log('arrayOfTodos:',arrayOfTodos)
+  
+  // clear content before repopulating
+  document.getElementById('todo-list').innerHTML = "";
+  
   //get ol tag to insert list items
   const ol = document.getElementById('todo-list');
 
@@ -93,5 +106,5 @@ const populateUserTodos = () => {
 
 
 const resetPage = () => {
-  
+  document.getElementById('todo-list').innerHTML = "";
 }
