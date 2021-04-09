@@ -39,6 +39,16 @@ const logTodos = () => {
 }
 
 const populateAllTodos = () => {
+  // fetch('https://jsonplaceholder.typicode.com/todos')
+  // .then((response) => response.json())
+  // .then((json) => arrayOfTodos = json)
+
+  // .then((json) => arrayOfTodos(json));
+
+  // clear content before repopulating
+  document.getElementById('todo-list').innerHTML = "";
+
+
   console.log('arrayOfTodos:',arrayOfTodos)
   //get ol tag to insert list items
   const ol = document.getElementById('todo-list');
@@ -63,12 +73,38 @@ const populateAllTodos = () => {
 }
 
 
-const populateUserTodos = () => populateAllTodos()
+const populateUserTodos = () => {
+  console.log('arrayOfTodos:',arrayOfTodos)
+  
+  // clear content before repopulating
+  document.getElementById('todo-list').innerHTML = "";
+  
+  //get ol tag to insert list items
+  const ol = document.getElementById('todo-list');
+
+  for (let index = 0; index < arrayOfTodos.length; index++) {
+    // create a new div element
+    const li = document.createElement("li");
+    // get title from object
+    const title = arrayOfTodos[index].title
+    // put title in the li element
+    const listItemText = document.createTextNode(title);
+    // add textNode to list element
+    li.appendChild(listItemText)
+    // add list item to ol element in DOM
+    ol.appendChild(li)
+    // document.body.insertBefore(li, ol);
+
+    // const element = arrayOfTodos[index];
+    // console.log('element:', element)
+
+  }
+}
+// const populateUserTodos = () =>  populateAllTodos()
 
 
-// console.log(arrayOfTodos1[0].userId) // => 14
-// console.log(arrayOfTodos1[1].userId) // => 20
+
 
 const resetPage = () => {
-  document.getElementById("content").innerHTML='<object type="text/html" data="index.html" ></object>';
+  document.getElementById('todo-list').innerHTML = "";
 }
